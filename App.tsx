@@ -83,7 +83,8 @@ const App: React.FC = () => {
       <div className="fixed inset-0 z-0">
         <Canvas shadows>
           <Suspense fallback={null}>
-            <ScrollControls pages={6} damping={0.2}>
+            {/* Pages adjusted to 5.2 for balanced spacing */}
+            <ScrollControls pages={5.2} damping={0.2}>
               <Scene3D />
               
               <Scroll html>
@@ -114,8 +115,8 @@ const App: React.FC = () => {
                     </motion.div>
                   </section>
 
-                  {/* About Section */}
-                  <section id="about" className="min-h-screen flex flex-col items-center justify-center px-10 md:px-24 bg-black/40 backdrop-blur-sm">
+                  {/* About Section - Middle-ground spacing py-44 */}
+                  <section id="about" className="py-44 flex flex-col items-center justify-center px-10 md:px-24 bg-black/40 backdrop-blur-sm">
                     <SectionTitle title="ABOUT US" subtitle="현장경력 7년 이상의 전문성" />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
                       {[
@@ -125,21 +126,22 @@ const App: React.FC = () => {
                       ].map((item, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, y: 50 }}
+                          initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.2 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ delay: idx * 0.1 }}
                           className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-blue-500/50 transition-colors group"
                         >
                           <div className="text-blue-500 mb-6 group-hover:scale-110 transition-transform">{item.icon}</div>
                           <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                          <p className="text-gray-400">{item.desc}</p>
+                          <p className="text-gray-400 leading-relaxed font-light">{item.desc}</p>
                         </motion.div>
                       ))}
                     </div>
                   </section>
 
-                  {/* Services Section */}
-                  <section id="services" className="min-h-screen flex flex-col items-center justify-center px-10 md:px-24">
+                  {/* Services Section - Middle-ground spacing py-44 */}
+                  <section id="services" className="py-44 flex flex-col items-center justify-center px-10 md:px-24">
                     <SectionTitle title="OUR SERVICES" subtitle="공간별 맞춤 케어 솔루션" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
                       {[
@@ -150,8 +152,9 @@ const App: React.FC = () => {
                       ].map((service, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, scale: 0.9 }}
+                          initial={{ opacity: 0, scale: 0.95 }}
                           whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
                           whileHover={{ y: -5 }}
                           className="relative overflow-hidden group bg-gradient-to-br from-zinc-900 to-black p-10 rounded-3xl border border-white/5"
                         >
@@ -160,7 +163,7 @@ const App: React.FC = () => {
                           <h3 className="text-3xl font-black mt-2 mb-6">{service.title}</h3>
                           <ul className="space-y-3">
                             {service.points.map((p, i) => (
-                              <li key={i} className="flex items-center gap-2 text-gray-400">
+                              <li key={i} className="flex items-center gap-2 text-gray-400 font-light">
                                 <CheckCircle2 size={16} className="text-blue-500" /> {p}
                               </li>
                             ))}
@@ -170,41 +173,43 @@ const App: React.FC = () => {
                     </div>
                   </section>
 
-                  {/* Strengths Section */}
-                  <section className="min-h-screen flex flex-col items-center justify-center px-10 md:px-24 bg-white text-black">
+                  {/* Strengths Section - Middle-ground spacing py-44 */}
+                  <section className="py-44 flex flex-col items-center justify-center px-10 md:px-24 bg-white text-black">
                     <SectionTitle title="WHY CHOOSE US" subtitle="더푸른클린만의 차별화된 가치" dark />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl">
                       {[
-                        { icon: <Users size={32} />, title: "다수 인력 투입", desc: "1~3인 이상 팀워크로 빠른 작업" },
-                        { icon: <Wrench size={32} />, title: "전문 장비 사용", desc: "작업 품질을 높이는 고출력 장비" },
-                        { icon: <Sparkles size={32} />, title: "철저한 AS", desc: "만족할 때까지 책임지는 애프터서비스" },
-                        { icon: <Star size={32} />, title: "정품 세제", desc: "자재 손상 없는 검증된 약품 사용" }
+                        { icon: <Users size={32} />, title: "다수 인력 투입", desc: "팀워크로 빠른 작업" },
+                        { icon: <Wrench size={32} />, title: "전문 장비 사용", desc: "고출력 프리미엄 장비" },
+                        { icon: <Sparkles size={32} />, title: "철저한 AS", desc: "만족할 때까지 책임" },
+                        { icon: <Star size={32} />, title: "정품 세제", desc: "자재 손상 없는 정품" }
                       ].map((strength, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, y: 30 }}
+                          initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ delay: idx * 0.05 }}
                           className="flex flex-col items-center text-center p-6 border-b-2 border-transparent hover:border-blue-600 transition-all"
                         >
                           <div className="bg-blue-50 p-4 rounded-full text-blue-600 mb-6">{strength.icon}</div>
                           <h4 className="text-xl font-bold mb-2">{strength.title}</h4>
-                          <p className="text-gray-600 font-medium">{strength.desc}</p>
+                          <p className="text-gray-600 font-medium text-sm">{strength.desc}</p>
                         </motion.div>
                       ))}
                     </div>
                   </section>
 
-                  {/* Reviews Section */}
-                  <section className="min-h-screen flex flex-col items-center justify-center px-10 md:px-24 bg-black">
+                  {/* Reviews Section - Middle-ground spacing py-44 */}
+                  <section className="py-44 flex flex-col items-center justify-center px-10 md:px-24 bg-black">
                     <SectionTitle title="REVIEWS" subtitle="고객님들이 증명하는 만족도" />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
                       {reviews.map((review, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, y: 40 }}
+                          initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.15 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ delay: idx * 0.1 }}
                           className="relative p-10 rounded-[2.5rem] bg-zinc-900/80 border border-white/5 flex flex-col h-full group hover:border-blue-500/40 transition-all"
                         >
                           <Quote className="absolute top-6 right-8 text-blue-500/20 w-12 h-12" />
@@ -225,35 +230,36 @@ const App: React.FC = () => {
                     </div>
                   </section>
 
-                  {/* Contact Section */}
-                  <section id="contact" className="h-[80vh] flex flex-col items-center justify-center px-10 md:px-24">
+                  {/* Contact Section - Final padding */}
+                  <section id="contact" className="py-44 flex flex-col items-center justify-center px-10 md:px-24">
                     <motion.div
-                      initial={{ opacity: 0, y: 50 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       className="text-center"
                     >
-                      <h2 className="text-5xl md:text-7xl font-black mb-8">당신의 시작을<br />축하합니다</h2>
+                      <h2 className="text-5xl md:text-7xl font-black mb-12 leading-tight">당신의 새로운 시작을<br />응원합니다</h2>
                       <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                         <div 
-                          className="flex items-center gap-3 bg-zinc-900 px-8 py-5 rounded-2xl border border-blue-500/30 cursor-pointer hover:bg-zinc-800 transition-colors"
+                          className="flex items-center gap-4 bg-zinc-900 px-10 py-6 rounded-2xl border border-blue-500/30 cursor-pointer hover:bg-zinc-800 transition-colors shadow-xl"
                           onClick={() => setIsModalOpen(true)}
                         >
-                          <PhoneCall className="text-blue-500" />
+                          <PhoneCall className="text-blue-500 w-6 h-6" />
                           <div>
-                            <p className="text-xs text-gray-500 text-left">24시간 견적 문의</p>
-                            <p className="text-2xl font-bold">010-5306-7345</p>
+                            <p className="text-xs text-gray-500 text-left uppercase tracking-tighter">24시간 견적 문의</p>
+                            <p className="text-2xl font-black">010-5306-7345</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-3 bg-zinc-900 px-8 py-5 rounded-2xl border border-blue-500/30">
-                          <MapPin className="text-blue-500" />
+                        <div className="flex items-center gap-4 bg-zinc-900 px-10 py-6 rounded-2xl border border-blue-500/30 shadow-xl">
+                          <MapPin className="text-blue-500 w-6 h-6" />
                           <div>
-                            <p className="text-xs text-gray-500 text-left">방문 가능 지역</p>
-                            <p className="text-2xl font-bold">서울 / 경기 전지역</p>
+                            <p className="text-xs text-gray-500 text-left uppercase tracking-tighter">방문 가능 지역</p>
+                            <p className="text-2xl font-black">서울 / 경기 전지역</p>
                           </div>
                         </div>
                       </div>
-                      <footer className="mt-20 text-gray-600 text-sm">
-                        &copy; 2025 THE PUREUN CLEAN. All rights reserved.
+                      <footer className="mt-28 text-gray-700 text-xs font-medium tracking-widest">
+                        &copy; 2025 THE PUREUN CLEAN. PREMIUM MOVE-IN CLEANING SERVICE.
                       </footer>
                     </motion.div>
                   </section>
